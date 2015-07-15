@@ -1,0 +1,18 @@
+{:consumer-properties {"zookeeper.connect"  "%%KAFKA_ZOOKEEPER_CONNECT%%"
+                       "group.id"           "bifrost"
+                       "auto.offset.reset"  "smallest" ; we explicitly commit offsets once files have
+                                                       ; been uploaded to s3 so no need for auto commit
+                       "auto.commit.enable" "false"}
+ :topic-blacklist     %%TOPIC_BLACKLIST%%   ; topics from :topic-blacklist will not be backed up
+                                            ; value should be a set of strings. 
+ :topic-whitelist     %%TOPIC_WHITELIST%%   ; if :topic-whitelist is defined, only topics
+                                            ; from the whitelist will be backed up. The
+                                            ; value should be a set of strings.
+ :rotation-interval   60000 ; milliseconds
+ :credentials         {:access-key "%%AWS_ACCESS_KEY_ID%%"
+                       :secret-key "%%AWS_SECRET_ACCESS_KEY%%"
+                       :endpoint "s3-eu-west-1.amazonaws.com"}
+ :uploaders-n         4 ; max-number of concurrent threads uploading to S3
+ :bucket              "%%S3_BUCKET_NAME%%"
+ :riemann-host        %%RIEMANN_HOST%% ; if :riemann-host is set, metrics will be pushed to that host
+ }
