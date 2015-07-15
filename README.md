@@ -1,5 +1,8 @@
 ![Thor wades rivers while the rest of the æsir ride across the bridge Bifröst as described in Grímnismál.](http://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/Thor_wades_while_the_%C3%A6sir_ride_by_Fr%C3%B8lich.jpg/559px-Thor_wades_while_the_%C3%A6sir_ride_by_Fr%C3%B8lich.jpg).
 
+__*NOTE: This is Funding circle's forked version of bifrost (0.1.0)*__  
+__*To see how this current version differs from bifrost (0.1.0) please see [FundingCircle Changelog](./FundingCircle-Changelog.md)*__
+
 # bifrost
 
 Archive Kafka data safely to S3.
