@@ -33,5 +33,7 @@ if grep -qoP '%%[^%]+%%' $CONFIG_FILE ; then
     exit 1
 fi
 
-
-java -Dlogback.configurationFile=/opt/bifrost/conf/logback.xml -server -jar /opt/bifrost/lib/bifrost-*-standalone.jar --config /opt/bifrost/conf/config.edn 
+### NOTE : Using exec because if a monitor (supervisord or envconsul) tries to kill this script
+###        the signal won't be passed onto the java process(which runs in a subshell).
+###        By using exec, we avoid the java process running in a subshell.
+exec java -Dlogback.configurationFile=/opt/bifrost/conf/logback.xml -server -jar /opt/bifrost/lib/bifrost-*-standalone.jar --config /opt/bifrost/conf/config.edn 
